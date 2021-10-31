@@ -1,0 +1,25 @@
+{% extends "layout.twig" %}
+{% block content %}
+    <article class="entry">
+        <div class="entry-img">
+            <img src="{{ data.IntroImage }}" alt="" class="img-fluid">
+        </div>
+        <h2 class="entry-title">
+
+            <a href="/view/{{ random(5)}}">{{ data.Title }}</a>
+        </h2>
+        <div class="entry-meta">
+            <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ data.Autor }}</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="">{{ data.Data }}</time></a></li>
+            </ul>
+        </div>
+
+        <div class="entry-content">
+            {{ data.Intro }}
+            <div class="read-more">
+                <a href="#">Read More</a>
+            </div>
+        </div>
+    </article>
+{% endblock %}

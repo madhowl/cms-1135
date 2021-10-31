@@ -1,0 +1,8 @@
+{% extends "layout.twig" %}
+{% block content %}
+    <ul >
+        {% for item in data %}
+            <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
