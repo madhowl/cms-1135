@@ -6,8 +6,13 @@ require('vendor/autoload.php');
 
 use NoahBuscher\Macaw\Macaw;
 
-Macaw::get('/', 'App\Controller@index');
-Macaw::get('page', 'App\Controller@page');
-Macaw::get('view/(:num)', 'App\Controller@view');
+Macaw::get('/', 'App\Controllers\FrontController@index');
+Macaw::get('page', 'App\Controllers\FrontController@page');
+Macaw::get('view/(:any)', 'App\Controllers\FrontController@view');
+
+
+// ------------- ADMIN -----------
+
+Macaw::get('/admin', 'App\Controllers\DashboardController@index');
 
 Macaw::dispatch();

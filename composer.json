@@ -2,7 +2,8 @@
     "name": "madhowl/simple-cms",
     "require": {
         "twig/twig": "^3.3",
-        "noahbuscher/macaw": "dev-master"
+        "noahbuscher/macaw": "dev-master",
+        "ausi/slug-generator": "^1.1"
     },
     "autoload": {
         "psr-4": {

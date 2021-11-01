@@ -1,5 +1,5 @@
 <?php
-const DB_HOST = '192.168.200.79';
-const DB_USER = 'user';
-const DB_PASSWORD = 'user';
-const DB_DATABASE = 'blog';
+const DB_HOST = 'localhost';
+const DB_USER = 'admin';
+const DB_PASSWORD = 'admin';
+const DB_DATABASE = 'cms-1135';
