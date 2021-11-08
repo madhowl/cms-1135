@@ -10,6 +10,8 @@ Macaw::get('/', 'App\Controllers\FrontController@index');
 Macaw::get('page', 'App\Controllers\FrontController@page');
 Macaw::get('view/(:any)', 'App\Controllers\FrontController@view');
 
+Macaw::get('category/(:num)', 'App\Controllers\FrontController@category');
+
 
 // ------------- ADMIN -----------
 

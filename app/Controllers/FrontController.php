@@ -22,22 +22,46 @@ class FrontController
 
     public function index()
     {
-        $allCat = $this->Categories->all();
-        $this->View->showIndexPage();
+        $allCategories = $this->Categories->all();
+        $this->View->showIndexPage($allCategories);
 
     }
 
     public function page()
     {
         $data = $this->Articles->all();
-        $this->View->showListPages($data);
+        $allCategories = $this->Categories->all();
+//        echo '<pre>';
+//        print_r($data);
+//        echo '</pre>';
+        $this->View->showListPages($data,$allCategories);
 
     }
 
     public function view(string $slug)
     {
         $slug = explode('.',$slug);
+        $allCategories = $this->Categories->all();
         $date = $this->Articles->getBySlug($slug[0]);
-        $this->View->showSinglePage($date);
+        $this->View->showSinglePage($date, $allCategories);
+    }
+
+    /**
+     * @return ArticlesModel
+     */
+    public function category(int $id)
+    {
+        $category = $this->Categories->getById($id);
+        $allCategories = $this->Categories->all();
+        //$this->dbg($allCategories);
+        $articlesListInCategory =$this->Articles->getByCategoryId($id);
+        $this->View->showListSingleCategory($category, $articlesListInCategory, $allCategories);
+    }
+
+    public function dbg($some)
+    {
+        echo '<pre>';
+        print_r($some);
+        echo '</pre>';
     }
 }

@@ -1,0 +1,9 @@
+{% extends "pagelist.twig" %}
+{% block content %}
+    <div class="content">
+        <h3>{{ categoryInfo.name }}</h3>
+        <p>{{ categoryInfo.description }}</p>
+    </div>
+
+{{ parent() }}
+{% endblock %}
