@@ -4,7 +4,7 @@
 namespace App\View;
 
 
-class DashboardView extends \App\View
+class DashboardView extends \App\CoreView
 {
     public function __construct()
     {

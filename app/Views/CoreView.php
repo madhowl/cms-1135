@@ -1,20 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Views;
 
 
-class View
+class CoreView
 {
     protected $loader;
     protected $twig;
 
     public function __construct()
     {
-        //$this->loader = new \Twig\Loader\FilesystemLoader('template/front/');
         $this->setLoader('template/front/');
-        $this->twig = new \Twig\Environment($this->loader, [
-            //'cache' => '/path/to/compilation_cache',
-        ]);
+        $this->twig = new \Twig\Environment($this->loader, []);
     }
 
     public function setLoader ($path)

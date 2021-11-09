@@ -7,10 +7,10 @@ require('vendor/autoload.php');
 use NoahBuscher\Macaw\Macaw;
 
 Macaw::get('/', 'App\Controllers\FrontController@index');
-Macaw::get('page', 'App\Controllers\FrontController@page');
-Macaw::get('view/(:any)', 'App\Controllers\FrontController@view');
+Macaw::get('page', 'App\Controllers\FrontController@allArticles');
+Macaw::get('view/(:any)', 'App\Controllers\FrontController@singleArticle');
 
-Macaw::get('category/(:num)', 'App\Controllers\FrontController@category');
+Macaw::get('category/(:num)', 'App\Controllers\FrontController@articleInCategory');
 
 
 // ------------- ADMIN -----------
