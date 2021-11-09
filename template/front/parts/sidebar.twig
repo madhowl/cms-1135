@@ -1,11 +1,2 @@
-<div class="sidebar">
-    <h3 class="sidebar-title">Категории</h3>
-    <div class="sidebar-item categories">
-        <ul>
-            {% for category in categories %}
-            <li><a href="/category/{{ category.id }}">{{ category.name}} <span>(25)</span></a></li>
-            {% endfor %}
-        </ul>
-    </div><!-- End sidebar categories-->
-
-</div>
+    {{ include('parts/categories.twig') }}<!-- End sidebar categories-->
+    {{ include('parts/tags.twig') }}<!-- End sidebar tags-->

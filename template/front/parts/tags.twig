@@ -1,0 +1,10 @@
+<div class="sidebar">
+    <h3 class="sidebar-title">Метки</h3>
+    <div class="sidebar-item categories">
+
+        {% for tag in tags %}
+            <a href="/tag/{{ tag.name }}" style="font-size: {{ 10+tag.count*3  }}pt; ">{{ tag.name}} <span>({{tag.count}})</span></a>
+        {% endfor %}
+
+    </div>
+</div>

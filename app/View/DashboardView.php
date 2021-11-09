@@ -16,7 +16,7 @@ class DashboardView extends \App\View
     public function showIndexPage()
     {
         $title = 'Главная страница';
-        $template = $this->twig->load('blank.html');
+        $template = $this->twig->load('index.html');
         echo $template->render(['Title'=>$title]);
     }
 }

@@ -6,11 +6,11 @@ namespace App\View;
 
 class FrontView extends \App\View
 {
-    public function showIndexPage($categories)
+    public function showIndexPage($categories,$tags)
     {
         $title = 'Главная страница';
         $template = $this->twig->load('index.twig');
-        echo $template->render(['Title'=>$title,'categories'=>$categories]);
+        echo $template->render(['Title'=>$title,'categories'=>$categories, 'tags'=>$tags]);
     }
     public function showListPages(array $data, $categories)
     {

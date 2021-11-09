@@ -1,14 +1,12 @@
 <?php
 
-
 namespace App\Models;
 
-
-class CategoriesModel extends CoreModel
+class TagsModel extends CoreModel
 {
-    public function getAllCategories()
+    public function getAllTags()
     {
-        $sql="SELECT *, (SELECT count(*) FROM articles WHERE  category_id= c.id ) as count FROM categories c";
+        $sql="SELECT name, (SELECT count(*) FROM article_tag WHERE  tag_id= t.id ) as count FROM tags t";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         while($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
