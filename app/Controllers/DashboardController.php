@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 
-use App\View\DashboardView as View;
+use App\Views\DashboardView as View;
 
 class DashboardController extends \App\Controller
 {

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\View;
+namespace App\Views;
 
 
-class DashboardView extends \App\CoreView
+class DashboardView extends \App\Views\CoreView
 {
     public function __construct()
     {
