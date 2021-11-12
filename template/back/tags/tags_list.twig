@@ -1,7 +1,5 @@
 {% extends "layout.twig" %}
 {% block content %}
-
-
     <table class="table">
         <thead>
         <tr>
@@ -20,21 +18,20 @@
                 <td>{{ tag.count }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button class="btn btn-danger" type="button">
-                            <a href="">
-                                <i class="fa-solid fa-pencil"></i>
-                                &nbsp;Редактировать
+                        <button class="btn btn-danger" type="button" data-coreui-toggle="tooltip" data-coreui-placement="Edit" data-coreui-original-title="Tooltip on top">
+                            <a href="" style="color: black" class="btn btn-danger" data-coreui-toggle="tooltip" data-coreui-placement="Edit" data-coreui-original-title="Tooltip on top">
+                                <i class="fa-solid fa-pencil"> </i>
                             </a>
                         </button>
                         <button class="btn btn-warning" type="button">
-                            <a href="">
-                                <i class="fa-solid fa-trash"></i>&nbsp;Удалить
+                            <a href="" style="color: black">
+                                <i class="fa-solid fa-trash-can"> </i>
+
                             </a>
                         </button>
                         <button class="btn btn-success" type="button">
-                            <a href="">
-                                <i class="fa-solid fa-pencil"></i>
-                                &nbsp;Пpосмотреть
+                            <a href="" style="color: black">
+                                <i class="fa-solid fa-eye"> </i>
                             </a>
                         </button>
                     </div>
@@ -43,6 +40,5 @@
         {% endfor %}
         </tbody>
     </table>
-
 
 {% endblock %}
