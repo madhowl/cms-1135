@@ -19,4 +19,11 @@ class DashboardView extends \App\Views\CoreView
         $template = $this->twig->load('index.twig');
         echo $template->render(['Title'=>$title]);
     }
+
+    public function showAllTags($tag_list)
+    {
+        $title = 'Метки';
+        $template = $this->twig->load('tags/tags_list.twig');
+        echo $template->render(['Title'=>$title, 'tag_list'=>$tag_list]);
+    }
 }
