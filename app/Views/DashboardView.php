@@ -17,13 +17,19 @@ class DashboardView extends \App\Views\CoreView
     {
         $title = 'Главная страница';
         $template = $this->twig->load('index.twig');
-        echo $template->render(['Title'=>$title]);
+        echo $template->render(['title'=>$title]);
     }
 
     public function showAllTags($tag_list)
     {
         $title = 'Метки';
         $template = $this->twig->load('tags/tags_list.twig');
-        echo $template->render(['Title'=>$title, 'tag_list'=>$tag_list]);
+        echo $template->render(['title'=>$title, 'tag_list'=>$tag_list]);
+    }
+    public function showTagForm()
+    {
+        $title = 'Добавление новой метки';
+        $template = $this->twig->load('tags/tag_form.twig');
+        echo $template->render(['title'=>$title,]);
     }
 }

@@ -15,8 +15,11 @@ Macaw::get('category/(:num)', 'App\Controllers\FrontController@articleInCategory
 
 // ------------- ADMIN -----------
 
+Macaw::get('/admin', 'App\Controllers\DashboardController@index');
 Macaw::get('/admin/', 'App\Controllers\DashboardController@index');
 Macaw::get('/admin/tags', 'App\Controllers\DashboardController@showAllTags');
-Macaw::post('/admin/newtag/', 'App\Controllers\DashboardController@createNewTag');
+Macaw::get('/admin/tags/', 'App\Controllers\DashboardController@showAllTags');
+Macaw::get('/admin/tags/new', 'App\Controllers\DashboardController@createNewTag');
+Macaw::post('/admin/tags/add', 'App\Controllers\DashboardController@storeNewTag');
 
 Macaw::dispatch();

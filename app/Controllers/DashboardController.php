@@ -34,6 +34,6 @@ class DashboardController extends \App\Controller
     public function createNewTag()
     {
 //        $tag_list = $this->Tags->getAllTags();
-        $this->View->showTegForm();
+        $this->View->showTagForm();
     }
 }
