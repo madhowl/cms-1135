@@ -14,4 +14,19 @@ class TagsModel extends CoreModel
         }
         return $this->out;
     }
+    public function addNewTag($data)
+    {
+
+    }
+
+    public function updateTag($id, $data)
+    {
+
+    }
+
+    public function deleteTag($id)
+    {
+
+    }
+
 }
