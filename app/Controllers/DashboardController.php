@@ -36,4 +36,21 @@ class DashboardController extends \App\Controller
 //        $tag_list = $this->Tags->getAllTags();
         $this->View->showTagForm();
     }
+    public function tagView($id)
+    {
+        $tag = $this->Tags->getById($id);
+        $this->View->tagView($tag);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function tagDelete($id)
+    {
+
+        $tag = $this->Tags->getById($id);
+        echo $this->Tags->deleteTag($id);
+        $tag['name'] = 'успешно удалена';
+        $this->View->tagView($tag);
+    }
 }

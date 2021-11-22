@@ -32,4 +32,10 @@ class DashboardView extends \App\Views\CoreView
         $template = $this->twig->load('tags/tag_form.twig');
         echo $template->render(['title'=>$title,]);
     }
+    public function tagView($tag)
+    {
+        $title = 'Просмотр метки № '.$tag['id'];
+        $template = $this->twig->load('tags/tag_view.twig');
+        echo $template->render(['title'=>$title, 'tag'=>$tag]);
+    }
 }

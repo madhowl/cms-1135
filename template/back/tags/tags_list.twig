@@ -1,12 +1,13 @@
 {% extends "layout.twig" %}
 {% block content %}
-    <a class="btn btn-primary btn-lg" href="/admin/tags/new">Добавить метку</a>
+    <a class="btn btn-primary btn-lg" href="/admin/tag/new">Добавить метку</a>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">#id</th>
             <th scope="col">Имя метки</th>
             <th scope="col">Статей с этой меткой</th>
+            <th scope="col">deletet</th>
             <th scope="col">Действия</th>
         </tr>
         </thead>
@@ -17,22 +18,23 @@
                 <td>{{ tag.id }}</td>
                 <td>{{ tag.name }}</td>
                 <td>{{ tag.count }}</td>
+                <td>{{ tag.deleted_at }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="" style="color: black"
+                            <a href="/admin/tag-edit/{{ tag.id }}" style="color: black"
                                class="btn btn-outline-success"
                                data-coreui-toggle="tooltip" data-coreui-placement="left"
                                title="Редактировать">
                                 <i class="fa-solid fa-pencil"> </i>
                             </a>
-                            <a href=""
+                            <a href="/admin/tag-delete/{{ tag.id }}"
                                style="color: black"
                                class="btn btn-outline-danger"
                                data-coreui-toggle="tooltip" data-coreui-placement="top"
                                title="Удалить">
                                 <i class="fa-solid fa-trash-can"> </i>
                             </a>
-                            <a href=""
+                            <a href="/admin/tag-view/{{ tag.id }}"
                                style="color: black"
                                class="btn btn-outline-info"
                                data-coreui-toggle="tooltip" data-coreui-placement="right"

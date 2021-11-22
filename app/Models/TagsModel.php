@@ -26,7 +26,16 @@ class TagsModel extends CoreModel
 
     public function deleteTag($id)
     {
+        $date = date_create();
+        $time= date_timestamp_get($date);
 
+
+        $sql = "UPDATE ".$this->table." SET 'deleted_at' = :time WHERE `tags`.`id` = :id;" ;
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
+        $stmt->bindValue(":time", $time, \PDO::PARAM_INT);
+        $stmt->execute();
+        return  $time;
     }
 
 }
