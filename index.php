@@ -23,7 +23,7 @@ Macaw::get('/admin/tags', 'App\Controllers\DashboardController@showAllTags');
 //форма добавления метки
 Macaw::get('/admin/tag/new', 'App\Controllers\DashboardController@createNewTag');
 //сохраняем новую метку
-Macaw::post('/admin/tags/add', 'App\Controllers\DashboardController@storeNewTag');
+Macaw::post('/admin/tag/new', 'App\Controllers\DashboardController@storeNewTag');
 //форма редактирования метки
 Macaw::get('/admin/tag-edit/(:num)', 'App\Controllers\DashboardController@tagEdit');
 //обновляем метку по id
