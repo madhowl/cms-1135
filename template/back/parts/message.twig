@@ -1,0 +1,14 @@
+{% extends "layout.twig" %}
+{% block content %}
+    <div class="card">
+
+    </div>
+    <div class="card text-white bg-{{ message.style }} mb-3">
+        <div class="card-header">{{ message.header }}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{ message.title }}</h5>
+            <p class="card-text">{{ mesage.body }}</p>
+            <a href="http://cms.test/admin/tags" class="btn btn-primary">Вернутся назад</a>
+        </div>
+    </div>
+{% endblock%}

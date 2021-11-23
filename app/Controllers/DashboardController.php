@@ -23,9 +23,6 @@ class DashboardController extends \App\Controller
         $this->View->showIndexPage();
     }
 
-    /**
-     * @return mixed
-     */
     public function showAllTags()
     {
         $tag_list = $this->Tags->getAllTags();
@@ -33,7 +30,6 @@ class DashboardController extends \App\Controller
     }
     public function createNewTag()
     {
-//        $tag_list = $this->Tags->getAllTags();
         $this->View->showTagForm();
     }
     public function tagView($id)
@@ -42,15 +38,37 @@ class DashboardController extends \App\Controller
         $this->View->tagView($tag);
     }
 
-    /**
-     * @return mixed
-     */
     public function tagDelete($id)
     {
-
         $tag = $this->Tags->getById($id);
-        echo $this->Tags->deleteTag($id);
+        $this->Tags->deleteTag($id);
         $tag['name'] = 'успешно удалена';
         $this->View->tagView($tag);
+    }
+
+    public function prepareMessage($type ='ok')
+    {
+        $message['header'] = '----+=+----';
+        $message['body'] = 'Все удачно';
+        $message['title'] = 'Ok';
+        switch ($type){
+            case 'ok': $message['style']='success';
+            break;
+            case 'error': $message['style']='danger';
+            break;
+            case 'warning': $message['style']='warning';
+            break;
+            default : $message['style']='primary';
+        }
+        return $message;
+    }
+    public function storeNewTag()
+    {
+        if (isset($_POST['btn-task-add'])){
+            $data['name'] = $_POST['name'];
+            $this->Tags->addNewTag($data);
+            $message = $this->prepareMessage();
+            $this->View->storeNewTag($message);
+        }
     }
 }

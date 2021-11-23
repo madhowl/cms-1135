@@ -38,4 +38,10 @@ class DashboardView extends \App\Views\CoreView
         $template = $this->twig->load('tags/tag_view.twig');
         echo $template->render(['title'=>$title, 'tag'=>$tag]);
     }
+    public function storeNewTag($message)
+    {
+        $title = $message['title'];
+        $template = $this->twig->load('parts/message.twig');
+        echo $template->render(['title'=>$title, 'message'=>$message]);
+    }
 }
