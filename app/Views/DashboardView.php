@@ -44,4 +44,10 @@ class DashboardView extends \App\Views\CoreView
         $template = $this->twig->load('parts/message.twig');
         echo $template->render(['title'=>$title, 'message'=>$message]);
     }
+    public function showEditTagForm($tag)
+    {
+        $title = 'Добавление новой метки';
+        $template = $this->twig->load('tags/tag_form.twig');
+        echo $template->render(['title'=>$title, 'tag'=>$tag]);
+    }
 }

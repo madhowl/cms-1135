@@ -18,11 +18,19 @@ Macaw::get('category/(:num)', 'App\Controllers\FrontController@articleInCategory
 Macaw::get('/admin', 'App\Controllers\DashboardController@index');
 Macaw::get('/admin/', 'App\Controllers\DashboardController@index');
 // -------------- Tags -------------
+//показать все метки
 Macaw::get('/admin/tags', 'App\Controllers\DashboardController@showAllTags');
+//форма добавления метки
 Macaw::get('/admin/tag/new', 'App\Controllers\DashboardController@createNewTag');
-Macaw::get('/admin/tag-delete/(:num)', 'App\Controllers\DashboardController@tagDelete');
-Macaw::get('/admin/tag-edit/(:num)', 'App\Controllers\DashboardController@tagEdit');
-Macaw::get('/admin/tag-view/(:num)', 'App\Controllers\DashboardController@tagView');
+//сохраняем новую метку
 Macaw::post('/admin/tags/add', 'App\Controllers\DashboardController@storeNewTag');
+//форма редактирования метки
+Macaw::get('/admin/tag-edit/(:num)', 'App\Controllers\DashboardController@tagEdit');
+//обновляем метку по id
+Macaw::post('/admin/tag-edit/(:num)', 'App\Controllers\DashboardController@updateTag');
+//удаляем метку по id
+Macaw::get('/admin/tag-delete/(:num)', 'App\Controllers\DashboardController@tagDelete');
+//просмотр метки по id
+Macaw::get('/admin/tag-view/(:num)', 'App\Controllers\DashboardController@tagView');
 
 Macaw::dispatch();

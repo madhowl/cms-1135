@@ -71,4 +71,20 @@ class DashboardController extends \App\Controller
             $this->View->storeNewTag($message);
         }
     }
+
+    public function tagEdit($id)
+    {
+        $tag = $this->Tags->getById($id);
+        $this->View->showEditTagForm($tag);
+    }
+    public function updateTag($id)
+        {
+            if (isset($_POST['btn-task-add'])){
+                $data['id'] = $_POST['id'];
+                $data['name'] = $_POST['name'];
+                $this->Tags->updateTag($data);
+                $message = $this->prepareMessage();
+                $this->View->storeNewTag($message);
+            }
+        }
 }

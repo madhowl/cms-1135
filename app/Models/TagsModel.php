@@ -22,11 +22,11 @@ class TagsModel extends CoreModel
         $stmt->execute();
     }
 
-    public function updateTag($id, $data)
+    public function updateTag(array $data)
     {
         $sql = "UPDATE ".$this->table." SET name = :name WHERE tags.id = :id;" ;
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
+        $stmt->bindValue(":id", $data['id'], \PDO::PARAM_INT);
         $stmt->bindValue(":name", $data['name'], \PDO::PARAM_STR);
         $stmt->execute();
     }

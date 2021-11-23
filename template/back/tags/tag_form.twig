@@ -1,11 +1,12 @@
 {% extends "layout.twig" %}
 {% block content %}
 <h2>Добавление новой метки</h2>
-<form action="/admin/tags/add" method="post">
+<form action="" method="post">
     <div class="form-floating mb-3">
-        <input class="form-control" id="floatingInput" name="name" type="text" placeholder="Введите название метки">
+        <input class="form-control" id="floatingInput" name="name" type="text" placeholder="Введите название метки" value="{{ tag.name }}">
         <label for="floatingInput">Введите название метки</label>
     </div>
+    <input type="hidden" name="id" value="{{ tag.id }}">
     <input class="btn btn-primary mb-3" type="submit" name="btn-task-add" value="Сохранить">
 </form>
 {% endblock %}
