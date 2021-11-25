@@ -22,10 +22,10 @@ class DashboardController extends \App\Controller
     {
         $this->View->showIndexPage();
     }
-    public function showAllTags()
+    public function showAllTags($message='')
     {
         $tag_list = $this->Tags->getAllTags();
-        $this->View->showAllTags($tag_list);
+        $this->View->showAllTags($tag_list, $message);
     }
     public function createNewTag()
     {
@@ -40,32 +40,16 @@ class DashboardController extends \App\Controller
     {
         $tag = $this->Tags->getById($id);
         $this->Tags->deleteTag($id);
-        $tag['name'] = 'успешно удалена';
-        $this->View->tagView($tag);
-    }
-    public function prepareMessage($type ='ok')
-    {
-        $message['header'] = '----+=+----';
-        $message['body'] = 'Все удачно';
-        $message['title'] = 'Ok';
-        switch ($type){
-            case 'ok': $message['style']='success';
-            break;
-            case 'error': $message['style']='danger';
-            break;
-            case 'warning': $message['style']='warning';
-            break;
-            default : $message['style']='primary';
-        }
-        return $message;
+        $message = HelperClass::show_message('warning','Метка № '.$tag['id'].' помечена как удаленная!', 2000, 'topRight');
+        $this->showAllTags($message);
     }
     public function storeNewTag()
     {
         if (isset($_POST['btn-task-add'])){
             $data['name'] = $_POST['name'];
             $this->Tags->addNewTag($data);
-            $message = $this->prepareMessage();
-            $this->View->storeNewTag($message);
+            $message = HelperClass::show_message('success','Новая метка создана!', 2000, 'topRight');
+            $this->showAllTags($message);
         }
     }
     public function tagEdit($id)
@@ -79,10 +63,8 @@ class DashboardController extends \App\Controller
                 $data['id'] = $_POST['id'];
                 $data['name'] = $_POST['name'];
                 $this->Tags->updateTag($data);
-                //$message = $this->prepareMessage();
-                $message = HelperClass::show_message('success','User registration was successful!', 3000, 'topRight');
-
-                $this->View->storeNewTag($message);
+                $message = HelperClass::show_message('success','Ваши изменения сохранены!', 1000, 'topRight');
+                $this->showAllTags($message);
             }
         }
 }

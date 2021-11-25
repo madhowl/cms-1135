@@ -20,11 +20,11 @@ class DashboardView extends \App\Views\CoreView
         echo $template->render(['title'=>$title]);
     }
 
-    public function showAllTags($tag_list)
+    public function showAllTags($tag_list, $message ='')
     {
         $title = 'Метки';
         $template = $this->twig->load('tags/tags_list.twig');
-        echo $template->render(['title'=>$title, 'tag_list'=>$tag_list]);
+        echo $template->render(['title'=>$title, 'tag_list'=>$tag_list, 'message'=>$message]);
     }
     public function showTagForm()
     {
@@ -40,8 +40,8 @@ class DashboardView extends \App\Views\CoreView
     }
     public function storeNewTag($message)
     {
-        $title = $message['title'];
-        $template = $this->twig->load('parts/message.twig');
+        $title = '';//$message['title'];
+        $template = $this->twig->load('tags/tags_list.twig');
         echo $template->render(['title'=>$title, 'message'=>$message]);
     }
     public function showEditTagForm($tag)

@@ -15,19 +15,19 @@ class HelperClass
     public static function show_message($type, $text, $timeout, $layout)
     {
         $message = '
-    <script>
     new Noty({
       type: '."\"$type\"".',
       text: '."\"$text\"".',
       timeout: '."\"$timeout\"".',
       layout: '."\"$layout\"".',            
-      theme: "semanticui", 
+      theme: "relax", 
+      closeWith: ["click", "button"],
+      progressBar: true,
       animation: {
         open: "animated bounceInRight", 
         close: "animated bounceOutRight"
       }
-    }).show();
-    </script>';
+    }).show();';
         return $message;
     }
 
