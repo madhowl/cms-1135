@@ -45,8 +45,6 @@ class CoreModel
         }
         return $this->out;
     }
-
-
     /**
      * @param int $id
      * @return false|mixed
@@ -64,8 +62,6 @@ class CoreModel
             return $result;
         }
     }
-
-
     /**
      * @param string $slug
      * @return false|mixed

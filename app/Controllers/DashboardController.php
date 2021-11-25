@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\HelperClass;
 use App\Models\TagsModel;
 use App\Views\DashboardView as View;
 
@@ -17,12 +18,10 @@ class DashboardController extends \App\Controller
         $this->Tags = new TagsModel('tags');
         $this->View = new View();
     }
-
     public function index()
     {
         $this->View->showIndexPage();
     }
-
     public function showAllTags()
     {
         $tag_list = $this->Tags->getAllTags();
@@ -37,7 +36,6 @@ class DashboardController extends \App\Controller
         $tag = $this->Tags->getById($id);
         $this->View->tagView($tag);
     }
-
     public function tagDelete($id)
     {
         $tag = $this->Tags->getById($id);
@@ -45,7 +43,6 @@ class DashboardController extends \App\Controller
         $tag['name'] = 'успешно удалена';
         $this->View->tagView($tag);
     }
-
     public function prepareMessage($type ='ok')
     {
         $message['header'] = '----+=+----';
@@ -71,7 +68,6 @@ class DashboardController extends \App\Controller
             $this->View->storeNewTag($message);
         }
     }
-
     public function tagEdit($id)
     {
         $tag = $this->Tags->getById($id);
@@ -83,7 +79,9 @@ class DashboardController extends \App\Controller
                 $data['id'] = $_POST['id'];
                 $data['name'] = $_POST['name'];
                 $this->Tags->updateTag($data);
-                $message = $this->prepareMessage();
+                //$message = $this->prepareMessage();
+                $message = HelperClass::show_message('success','User registration was successful!', 3000, 'topRight');
+
                 $this->View->storeNewTag($message);
             }
         }
