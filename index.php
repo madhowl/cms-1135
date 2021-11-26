@@ -32,5 +32,10 @@ Macaw::post('/admin/tag-edit/(:num)', 'App\Controllers\DashboardController@updat
 Macaw::get('/admin/tag-delete/(:num)', 'App\Controllers\DashboardController@tagDelete');
 //просмотр метки по id
 Macaw::get('/admin/tag-view/(:num)', 'App\Controllers\DashboardController@tagView');
+// -------------- Articles -------------
+//показать все статьи
+Macaw::get('/admin/articles', 'App\Controllers\DashboardController@showAllArticles');
+//форма добавления статьи
+Macaw::get('/admin/article/new', 'App\Controllers\DashboardController@createNewArticle');
 
 Macaw::dispatch();

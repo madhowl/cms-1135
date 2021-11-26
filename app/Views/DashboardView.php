@@ -50,4 +50,22 @@ class DashboardView extends \App\Views\CoreView
         $template = $this->twig->load('tags/tag_form.twig');
         echo $template->render(['title'=>$title, 'tag'=>$tag]);
     }
+
+    public function showAllArticles($articles_list, $message ='')
+    {
+        $title = 'Статьи';
+        $template = $this->twig->load('articles/article_list.twig');
+        echo $template->render([
+            'title'=>$title,
+            'articles_list'=>$articles_list,
+            'message'=>$message
+        ]);
+    }
+
+    public function showArticleForm($categories)
+    {
+        $title = 'Добавление новой статьи';
+        $template = $this->twig->load('articles/article_form.twig');
+        echo $template->render(['title'=>$title,'categories'=>$categories]);
+    }
 }

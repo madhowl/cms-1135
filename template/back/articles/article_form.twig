@@ -1,0 +1,37 @@
+{% extends "layout.twig" %}
+{% block content %}
+    <h2>Добавление новой статьи</h2>
+    <form action="" method="post" class="row g-3">
+        <div class="form-floating mb-3">
+            <input class="form-control" id="floatingInput" name="title" type="text" placeholder="Введите название статьи" value="{{ article.title }}">
+            <label for="floatingInput">Введите заголовок статьи</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="floatingInput" name="intro_text" type="text" placeholder="Введите вступительный текст" value="{{ article.title }}">
+            <label for="floatingInput">Введите вступительный текст</label>
+        </div>
+        <div class="form-floating mb-3 col-6">
+            <select class="form-select" id="floatingSelect1"aria-label="Default select example">
+                {% for category in categories %}
+                    <option value="{{  category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="floatingSelect1">Выберите категорию</label>
+        </div>
+        <div class="form-floating mb-3 col-6">
+            <input class="form-control" type="file" id="formFile">
+            <label for="formFile" class="form-label">Выберите изиброжение для статьи</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" id="editor2" placeholder="Введите основной текст статьи" id="floatingTextarea2" style="height: 300px"></textarea>
+            <label for="floatingTextarea2">Введите основной текст статьи</label>
+        </div>
+        <input type="hidden" name="id" value="{{ article.id }}">
+        <input class="btn btn-primary mb-3" type="submit" name="btn-task-add" value="Сохранить">
+    </form>
+{% endblock %}
+{% block script %}
+    tinymce.init({
+    selector: '#editor2'
+    });
+{% endblock %}
