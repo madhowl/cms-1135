@@ -18,13 +18,27 @@
             </select>
             <label for="floatingSelect1">Выберите категорию</label>
         </div>
-        <div class="form-floating mb-3 col-6">
-            <input class="form-control" type="file" id="formFile">
-            <label for="formFile" class="form-label">Выберите изиброжение для статьи</label>
+        <div class="card col-6" >
+
+            <div class="card-body">
+                <h5 class="card-title">Изображение для статьи</h5>
+
+                <div class="row">
+                    <div class="col">
+                        <img  class="image-preview docs-placeholder-img img-thumbnail" width="200" height="200" src="/uploads/source/Dummy.jpg">
+                    </div>
+                    <div class="col">
+                        <input id="fieldID" type="text" value="">
+
+                        <a href="{{ path }}/vendors/filemanager/dialog.php?type=1&amp;field_id=fieldID&amp;relative_url=1&amp;multiple=1" class="btn iframe-btn btn-primary" type="button">Select</a></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="form-floating">
-            <textarea class="form-control" id="editor2" placeholder="Введите основной текст статьи" id="floatingTextarea2" style="height: 300px"></textarea>
-            <label for="floatingTextarea2">Введите основной текст статьи</label>
+            <textarea class="form-control" id="editor" placeholder="Введите основной текст статьи" id="floatingTextarea2" style="height: 300px"></textarea>
+
         </div>
         <input type="hidden" name="id" value="{{ article.id }}">
         <input class="btn btn-primary mb-3" type="submit" name="btn-task-add" value="Сохранить">
@@ -32,6 +46,19 @@
 {% endblock %}
 {% block script %}
     tinymce.init({
-    selector: '#editor2'
+    selector: '#editor'
     });
+
+    $('.iframe-btn').fancybox({
+    'width'		: 900,
+    'height'	: 600,
+    'type'		: 'iframe',
+    'autoScale'    	: false
+    });
+
+    function responsive_filemanager_callback(field_id){
+    var url=jQuery('#'+field_id).val();
+    $(".image-preview").attr('src','/uploads/source/'+url);
+    $("#fieldID").attr('value','/uploads/source/'+url);
+    }
 {% endblock %}
