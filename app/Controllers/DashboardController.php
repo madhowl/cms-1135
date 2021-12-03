@@ -92,4 +92,19 @@ class DashboardController extends \App\Controller
         $categories = $this->Categories->getListCategories();
         $this->View->showArticleForm($categories);
     }
+
+    public function storeNewArticle()
+    {
+        if (isset($_POST['btn-article-add'])) {
+            $data['title'] = $_POST['title'];
+            $data['intro_img'] = $_POST['intro_img'];
+            $data['category_id'] = $_POST['category_id'];
+            $data['intro_text'] = $_POST['intro_text'];
+            $data['full_text'] = $_POST['full_text'];
+            $data['visit'] = 0;
+            $this->Articles->addNewTag($data);
+            $message = HelperClass::show_message('success', 'Новая статья создана!', 2000, 'topRight');
+            $this->showAllTags($message);
+        }
+    }
 }

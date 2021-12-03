@@ -37,5 +37,7 @@ Macaw::get('/admin/tag-view/(:num)', 'App\Controllers\DashboardController@tagVie
 Macaw::get('/admin/articles', 'App\Controllers\DashboardController@showAllArticles');
 //форма добавления статьи
 Macaw::get('/admin/article/new', 'App\Controllers\DashboardController@createNewArticle');
+//форма добавления статьи
+Macaw::post('/admin/article/new', 'App\Controllers\DashboardController@storeNewArticle');
 
 Macaw::dispatch();

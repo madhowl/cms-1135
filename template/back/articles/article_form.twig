@@ -18,7 +18,7 @@
             </select>
             <label for="floatingSelect1">Выберите категорию</label>
         </div>
-        <div class="card col-6" >
+        <div class="card col-6 mb-3" >
 
             <div class="card-body">
                 <h5 class="card-title">Изображение для статьи</h5>
@@ -36,18 +36,23 @@
 
             </div>
         </div>
-        <div class="form-floating">
-            <textarea class="form-control" id="editor" placeholder="Введите основной текст статьи" id="floatingTextarea2" style="height: 300px"></textarea>
+
+        <div class="form-floating mb-3">
+            <h4>Введите основной текст статьи</h4>
+            <textarea class="form-control editor-ckeditor" id="editor-ckeditor" placeholder="Введите основной текст статьи" id="floatingTextarea2" "></textarea>
 
         </div>
         <input type="hidden" name="id" value="{{ article.id }}">
-        <input class="btn btn-primary mb-3" type="submit" name="btn-task-add" value="Сохранить">
+        <input class="btn btn-primary mb-3" type="submit" name="btn-article-add" value="Сохранить">
     </form>
 {% endblock %}
 {% block script %}
-    tinymce.init({
-    selector: '#editor'
+    CKEDITOR.replace( 'editor-ckeditor' ,{
+    filebrowserBrowseUrl : '{{ path }}/vendors/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    filebrowserUploadUrl : '{{ path }}/vendors/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    filebrowserImageBrowseUrl : '{{ path }}/vendors/filemanager/dialog.php?type=1&editor=ckeditor&fldr='
     });
+
 
     $('.iframe-btn').fancybox({
     'width'		: 900,
