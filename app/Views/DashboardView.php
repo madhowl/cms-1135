@@ -68,4 +68,13 @@ class DashboardView extends \App\Views\CoreView
         $template = $this->twig->load('articles/article_form.twig');
         echo $template->render(['title'=>$title,'categories'=>$categories]);
     }
+
+    public function showEditArticleForm($article, $categories)
+    {
+        $title = 'Редактирование статьи';
+        $template = $this->twig->load('articles/article_form.twig');
+        echo $template->render(['title'=>$title,'categories'=>$categories, 'article'=>$article]);
+    }
+
+    
 }

@@ -17,4 +17,17 @@ class ArticlesModel extends CoreModel
         }
         return $this->out;
     }
+
+    public function addNewArticle($data)
+    {
+        $sql = "INSERT INTO ".$this->table." (id, title, category_id, intro_text, intro_img, full_text, visit) VALUES (NULL, :title, :category_id, :intro_text, :intro_img, :full_text, :visit);" ;
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":title", $data['title'], \PDO::PARAM_STR);
+        $stmt->bindValue(":category_id", $data['category_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(":intro_text", $data['intro_text'], \PDO::PARAM_STR);
+        $stmt->bindValue(":intro_img", $data['intro_img'], \PDO::PARAM_STR);
+        $stmt->bindValue(":full_text", $data['full_text'], \PDO::PARAM_STR);
+        $stmt->bindValue(":visit", $data['visit'], \PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }

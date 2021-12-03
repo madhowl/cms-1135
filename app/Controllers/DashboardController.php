@@ -102,9 +102,16 @@ class DashboardController extends \App\Controller
             $data['intro_text'] = $_POST['intro_text'];
             $data['full_text'] = $_POST['full_text'];
             $data['visit'] = 0;
-            $this->Articles->addNewTag($data);
+            $this->Articles->addNewArticle($data);
             $message = HelperClass::show_message('success', 'Новая статья создана!', 2000, 'topRight');
             $this->showAllTags($message);
         }
+    }
+    
+    public function articleEdit($id)
+    {
+        $article = $this->Articles->getById($id);
+        $categories = $this->Categories->getListCategories();
+        $this->View->showEditArticleForm($article, $categories);
     }
 }

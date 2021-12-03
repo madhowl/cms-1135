@@ -11,7 +11,7 @@
             <label for="floatingInput">Введите вступительный текст</label>
         </div>
         <div class="form-floating mb-3 col-6">
-            <select class="form-select" id="floatingSelect1"aria-label="Default select example">
+            <select class="form-select" id="floatingSelect1" name="category_id" >
                 {% for category in categories %}
                     <option value="{{  category.id }}">{{ category.name }}</option>
                 {% endfor %}
@@ -25,7 +25,13 @@
 
                 <div class="row">
                     <div class="col">
-                        <img  class="image-preview docs-placeholder-img img-thumbnail" width="200" height="200" src="/uploads/source/Dummy.jpg">
+                        <img  class="image-preview docs-placeholder-img img-thumbnail" width="200" height="200" src="
+                        {% if article.intro_img is empty %}
+                            /uploads/source/Dummy.jpg
+                        {% else %}
+                            {{ article.intro_img }}
+                        {% endif %}
+                        ">
                     </div>
                     <div class="col">
                         <input id="fieldID" type="text" value="">
