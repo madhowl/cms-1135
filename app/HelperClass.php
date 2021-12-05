@@ -31,4 +31,10 @@ class HelperClass
         return $message;
     }
 
+    public static function debug($some)
+    {
+        echo '<pre>';
+        print_r($some);
+    }
+
 }

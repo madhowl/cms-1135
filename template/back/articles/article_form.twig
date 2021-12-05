@@ -34,7 +34,7 @@
                         ">
                     </div>
                     <div class="col">
-                        <input id="fieldID" type="text" value="">
+                        <input id="fieldID" type="text" value="" name="intro_img">
 
                         <a href="{{ path }}/vendors/filemanager/dialog.php?type=1&amp;field_id=fieldID&amp;relative_url=1&amp;multiple=1" class="btn iframe-btn btn-primary" type="button">Select</a></div>
                     </div>
@@ -45,8 +45,7 @@
 
         <div class="form-floating mb-3">
             <h4>Введите основной текст статьи</h4>
-            <textarea class="form-control editor-ckeditor" id="editor-ckeditor" placeholder="Введите основной текст статьи" id="floatingTextarea2" "></textarea>
-
+            <textarea class="form-control editor-ckeditor" id="editor-ckeditor" placeholder="Введите основной текст статьи" id="floatingTextarea2" name="full_text"></textarea>
         </div>
         <input type="hidden" name="id" value="{{ article.id }}">
         <input class="btn btn-primary mb-3" type="submit" name="btn-article-add" value="Сохранить">

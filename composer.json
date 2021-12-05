@@ -3,7 +3,7 @@
     "require": {
         "twig/twig": "^3.3",
         "noahbuscher/macaw": "dev-master",
-        "ausi/slug-generator": "^1.1"
+        "jbroadway/urlify": "^1.2"
     },
     "autoload": {
         "psr-4": {

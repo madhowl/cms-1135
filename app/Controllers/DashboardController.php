@@ -9,6 +9,7 @@ use App\Models\CategoriesModel;
 use App\Models\TagsModel;
 use App\Views\DashboardView as View;
 
+
 class DashboardController extends \App\Controller
 {
     protected $Categories;
@@ -22,6 +23,7 @@ class DashboardController extends \App\Controller
         $this->Articles = new ArticlesModel('articles');
         $this->Tags = new TagsModel('tags');
         $this->View = new View();
+
     }
 
     public function index()
@@ -96,15 +98,18 @@ class DashboardController extends \App\Controller
     public function storeNewArticle()
     {
         if (isset($_POST['btn-article-add'])) {
+            $data['category_id'] =(int) $_POST['category_id'];
             $data['title'] = $_POST['title'];
             $data['intro_img'] = $_POST['intro_img'];
-            $data['category_id'] = $_POST['category_id'];
             $data['intro_text'] = $_POST['intro_text'];
             $data['full_text'] = $_POST['full_text'];
             $data['visit'] = 0;
+            $data['slug'] = \URLify::slug($data['title']);
+
             $this->Articles->addNewArticle($data);
+            //HelperClass::debug($data);
             $message = HelperClass::show_message('success', 'Новая статья создана!', 2000, 'topRight');
-            $this->showAllTags($message);
+            $this->showAllArticles($message);
         }
     }
     
