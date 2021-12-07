@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
+session_start();
 require_once('./config/db.php');
 require('vendor/autoload.php');
 
@@ -14,6 +15,9 @@ Macaw::get('category/(:num)', 'App\Controllers\FrontController@articleInCategory
 
 
 // ------------- ADMIN -----------
+// ------------- Login -----------
+Macaw::get('/admin/login', 'App\AuthClass@showLoginForm');
+Macaw::post('/admin/login', 'App\AuthClass@checkLogin');
 
 Macaw::get('/admin', 'App\Controllers\DashboardController@index');
 Macaw::get('/admin/', 'App\Controllers\DashboardController@index');

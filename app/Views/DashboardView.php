@@ -13,6 +13,12 @@ class DashboardView extends \App\Views\CoreView
             //'cache' => '/path/to/compilation_cache',
         ]);
     }
+    public function showLoginForm()
+    {
+        $title = 'Форма авторизации';
+        $template = $this->twig->load('login.twig');
+        echo $template->render(['title'=>$title]);
+    }
     public function showIndexPage()
     {
         $title = 'Главная страница';

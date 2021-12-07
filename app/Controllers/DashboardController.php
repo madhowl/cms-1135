@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\AuthClass;
 use App\HelperClass;
 use App\Models\ArticlesModel;
 use App\Models\CategoriesModel;
@@ -16,14 +17,19 @@ class DashboardController extends \App\Controller
     protected $Articles;
     protected $Tags;
     protected $View;
+    protected $username;
 
     public function __construct()
     {
-        $this->Categories = new CategoriesModel('categories');
-        $this->Articles = new ArticlesModel('articles');
-        $this->Tags = new TagsModel('tags');
-        $this->View = new View();
-
+        $this->username = AuthClass::checkUserAuth();
+        if ($this->username == false){
+            HelperClass::goToUrl('/admin/login');
+        }else {
+            $this->Categories = new CategoriesModel('categories');
+            $this->Articles = new ArticlesModel('articles');
+            $this->Tags = new TagsModel('tags');
+            $this->View = new View();
+        }
     }
 
     public function index()

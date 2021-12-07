@@ -36,5 +36,8 @@ class HelperClass
         echo '<pre>';
         print_r($some);
     }
-
+    public static function goToUrl($url)
+    {
+        echo "<script> window.location.href = '$url';</script>";
+    }
 }
