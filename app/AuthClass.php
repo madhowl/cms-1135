@@ -22,7 +22,7 @@ class AuthClass
             return false;
         }
     }
-    public function showloginForm()
+    public function showLoginForm()
     {
     $this->View->showLoginForm();
     }
@@ -39,14 +39,19 @@ class AuthClass
                 "[^a-zA-Z0-9]",
                 '',
                 strip_tags($_POST['password']));
+            $user = $this->Users->checkEntryExists('username', $username);
             if (
-                $this->Users->checkEntryExists('username', $username) == false
-                //$this->Users->checkEntryExists('email',$email) == false &&
+                $user == false
             ){
                 echo 'user disable<br>';
 
             }else{
-                echo 'user enabled<br>';
+                if (hash('md5', $password) == $user['password']){
+                    $_SESSION['username'] = $username;
+                    echo 'user & password is okey';
+                }else{
+                    echo 'poassword incorrect<br>';
+                }
             };
             /*echo $username.'<br>';
             echo hash('md5', $password).'<br>';

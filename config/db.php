@@ -1,7 +1,5 @@
 <?php
-const DB_HOST = 'localhost';
+const DB_HOST = '192.168.200.79';
 const DB_USER = 'user';
-const DB_PASSWORD = '12345678';
+const DB_PASSWORD = 'user';
 const DB_DATABASE = 'cms-1135';
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'admin';
